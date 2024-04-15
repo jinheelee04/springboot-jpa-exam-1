@@ -38,7 +38,7 @@ public class Order {
         member.getOrders().add(this);
     }
     public void addOrderItem(OrderItem orderItem){
-        orderItem.add(orderItem);
+        orderItems.add(orderItem);
         orderItem.setOrder(this);
     }
     public void setDelivery(Delivery delivery){
