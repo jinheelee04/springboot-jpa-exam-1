@@ -38,6 +38,7 @@ public abstract class Item {
      */
     public void removeStock(int quentity){
         int restStock = this.stockQuantity - quentity;
+        System.out.println("restStock="+restStock);
         if(restStock < 0){
             throw new NotEnoughStockException("read more Stock");
         }
