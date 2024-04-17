@@ -35,7 +35,7 @@ public class OrderRepository {
                 .setMaxResults(1000)
                 .getResultList();
     }
-    
+
     // 동적쿼리 예제(실무에서 사용 안함, 버그 발생 가능성 높음)
     public List<Order> findAllByString(OrderSearch orderSearch){
         String jpql = "select o From Order o join o.member m";
