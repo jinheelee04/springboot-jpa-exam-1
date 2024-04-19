@@ -22,7 +22,7 @@ public class Member {
     @Embedded
     private Address address;
 
-//    @JsonIgnore // 엔티티 안에 화면 조건 있으면 상황에 따라 다르기 때문에 문제가 발생함
+    @JsonIgnore // 엔티티 안에 화면 조건 있으면 상황에 따라 다르기 때문에 문제가 발생함
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 }
