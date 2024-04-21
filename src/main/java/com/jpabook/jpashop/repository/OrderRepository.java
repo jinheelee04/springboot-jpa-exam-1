@@ -110,4 +110,19 @@ public class OrderRepository {
                 " join fetch o.member m"+
                 " join fetch o.delivery d", Order.class).getResultList();
     }
+
+    /**
+     * 일반적인 SQL을 사용할 때 처럼 원하는 값을 선택해서 조회
+     * new 명령어를 사용해서 JPQL의 결과를 DTO로 즉시 변환
+     * SELECT 절에서 원하는 데이터를 직접 선택하므로 DB  애플리케이션 네트웍 용량 최적화(생각보다 미비)
+     * API스펙이 변경되면 리포지토리 계층도 수정되어야 함
+     * 리포지토리는 순수 엔티티를 조회하는 용도로 사용하는 것이 좋음
+     */
+    /*public List<OrderSimpleQueryDto> findOrderDtos() {
+        return em.createQuery(
+                "select new com.jpabook.jpashop.repository.order.simplequery.OrderSimpleQueryDto(o.id, m.name, o.orderDate, o.status, d.address)"+
+                        " from Order o" +
+                        " join o.member m"+
+                        " join o.delivery d", OrderSimpleQueryDto.class).getResultList();
+    }*/
 }
