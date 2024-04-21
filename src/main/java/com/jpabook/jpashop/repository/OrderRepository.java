@@ -110,6 +110,18 @@ public class OrderRepository {
                 " join fetch o.member m"+
                 " join fetch o.delivery d", Order.class).getResultList();
     }
+    public List<Order> findAllWithItem(){
+        return em.createQuery(
+                "select distinct o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d" +
+                        " join fetch o.orderItems oi" +
+                        " join fetch oi.item i", Order.class
+        )
+                 // 페이징 쿼리 불가능
+//                .setFirstResult(0).setMaxResults(1) // firstResult/maxResults specified with collection fetch; applying in memory 메모리에서 페이징 처리
+                .getResultList();
+    }
 
     /**
      * 일반적인 SQL을 사용할 때 처럼 원하는 값을 선택해서 조회
