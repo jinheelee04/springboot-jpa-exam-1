@@ -123,6 +123,15 @@ public class OrderRepository {
                 .getResultList();
     }
 
+    public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+        return em.createQuery("select  o from Order o"+
+                " join fetch o.member m"+
+                " join fetch o.delivery d", Order.class)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+    }
+
     /**
      * 일반적인 SQL을 사용할 때 처럼 원하는 값을 선택해서 조회
      * new 명령어를 사용해서 JPQL의 결과를 DTO로 즉시 변환

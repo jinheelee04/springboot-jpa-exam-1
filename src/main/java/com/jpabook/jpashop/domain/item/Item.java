@@ -8,7 +8,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//@BatchSize(100)
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // 한 테이블의 모든 상속된 변수들 컬럼 생성
 @Getter @Setter
